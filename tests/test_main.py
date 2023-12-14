@@ -8,7 +8,7 @@ from database import Base
 from fastapi.testclient import TestClient
 
 load_dotenv()
-engine = create_engine(os.getenv('DATABASE_URL'))
+engine = create_engine(os.getenv('TESTING_DATABASE_URL'))
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
 
