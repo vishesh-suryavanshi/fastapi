@@ -6,7 +6,7 @@
   - `source env/bin/activate`
 3. Run the below command to install the required packages:-
   - `pip install -r requirements.txt`
-4. Create a .env file and store your database credentials in below format.
+4. Create a .env file and store your database credentials in below format:-
   - `dbname = 'name_of_db'`
   - `user= 'username_of_db'`
   - `password= 'password_of_db'`
@@ -22,5 +22,5 @@
 5. There are two endpoints in this project:-
   - `/api/weather/`
   - `/api/weather/stats/`
-6. To run the testcases use this command:
+6. To run the testcases use this command:-
   - `pytest`
