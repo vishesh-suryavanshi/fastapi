@@ -28,4 +28,11 @@ class Stats(Base):
     avg_max_temperature = Column(Float)
     avg_min_temperature = Column(Float)
     avg_precipitation = Column(Float)
-    station_id = Column(Integer, ForeignKey('station.id'), primary_key=True)
+    year = Column(Integer)
+    station_id = Column(Integer, ForeignKey('station.id'))
+    __table_args__ = (
+        PrimaryKeyConstraint(
+            year,
+            station_id
+        ),
+    )
