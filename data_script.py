@@ -42,16 +42,19 @@ try:
         station_id = station[0]
         with open(file_path, 'r') as file:
             for line in file:
-                data = line.strip().split('\t')
-                temp_line = []
-                for idx, cell in enumerate(data):
-                    if idx == 0:
-                        temp_line.append(datetime.strptime(str(cell), '%Y%m%d').date())
-                    else:
-                        temp_line.append(None if int(cell.strip()) == -9999 else int(cell.strip()))
-                temp_line.append(station_id)
-                unique_records.add(tuple(temp_line))
                 cnt += 1
+                data = line.strip().split('\t')
+                if '-9999' in data:
+                    continue
+                else:
+                    temp_line = []
+                    for idx, cell in enumerate(data):
+                        if idx == 0:
+                            temp_line.append(datetime.strptime(str(cell), '%Y%m%d').date())
+                        else:
+                            temp_line.append(int(cell.strip()))
+                    temp_line.append(station_id)
+                    unique_records.add(tuple(temp_line))
         for record in unique_records:
             cursor.execute(insert_into_record, record)
         end_time = datetime.now()
