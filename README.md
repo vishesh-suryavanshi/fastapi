@@ -49,6 +49,8 @@ Create a .env file and store your database credentials in below format:-
 ```bash
 uvicorn main:app --reload
 ```
+<img src="https://i.ibb.co/fY4HL0q/test3.png" alt="" height="100" width="450"/>
+
 #### This step will take few minutes as it will dump the data in the initial setup.
 
 # To access the API endpoints:
@@ -62,3 +64,14 @@ To run the testcases use this command:-
 ```bash
 pytest
 ```
+
+### Screenshot of Testcase output.
+<img src="https://i.ibb.co/2WKg2Ht/image.png" alt="" />
+
+# Screenshots of Postman Collection
+
+<img src="https://i.ibb.co/S5LBYKB/Screenshot-2023-12-27-at-8-11-24-PM.png" alt="weather image" /> 
+<br><br>
+<img src="https://i.ibb.co/zXgK91S/Screenshot-2023-12-27-at-8-12-39-PM.png" alt="weather/stats" />
+<br><br>
+<img src="https://i.ibb.co/KLqR9tc/Screenshot-2023-12-27-at-8-13-26-PM.png" alt="Swagger image" />
