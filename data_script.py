@@ -5,7 +5,11 @@ from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 
+import models
+from database import engine
+
 try:
+    models.Base.metadata.create_all(bind=engine)
     logging.basicConfig(
         level=logging.DEBUG,
         format='%(asctime)s - %(levelname)s - %(message)s',
@@ -33,7 +37,7 @@ try:
 
     for file_name in file_list:
         file_path = os.path.join(folder_path, file_name)
-        unique_records = set()
+        all_records = []
         cnt = 0
         station_name = Path(file_path).stem
         cursor.execute(insert_into_station, (station_name,))
@@ -54,12 +58,12 @@ try:
                         else:
                             temp_line.append(int(cell.strip()))
                     temp_line.append(station_id)
-                    unique_records.add(tuple(temp_line))
-        for record in unique_records:
+                    all_records.append(temp_line)
+        for record in all_records:
             cursor.execute(insert_into_record, record)
         end_time = datetime.now()
         logging.info(f'Start time {start_time}, End time {end_time}, Total Records {cnt}, '
-                     f'Inserted Records {len(unique_records)}')
+                     f'Inserted Records {len(all_records)}')
     connection.commit()
     cursor.close()
     connection.close()
