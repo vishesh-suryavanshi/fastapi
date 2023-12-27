@@ -13,6 +13,10 @@ There are 3 endpoints in this project:-
 3. Run the below command to install the required packages:-
   - `pip install -r requirements.txt`
 
+# Database Setup and Installation.
+1. Download and Install PostgreSQL in your computer.
+2. Create a database.
+
 # Setup environment variables.
 Create a .env file and store your database credentials in below format:-
   - `dbname = 'name_of_db'`
