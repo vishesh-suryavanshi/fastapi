@@ -7,39 +7,58 @@ There are 3 endpoints in this project:-
 # Project Setup and Installation.
 1. Clone the git repository.
 2. Create and activate a virtual environment using the below commands:-
-  - `pip install virtualenv`
-  - `python -m venv env`
-  - `source env/bin/activate` (For Mac and Linux)
-  - `env\Scripts\activate` (in Windows)
+```bash
+
+  python -m venv env
+  source env/bin/activate #(For Mac and Linux)
+  env\Scripts\activate #(For Windows)
+
+```
+
+
 3. Run the below command to install the required packages:-
-  - `pip install -r requirements.txt`
+```bash 
+  pip install -r requirements.txt
+  ```
 4. Move to project directory using below command:-
-  - `cd fastapi`
+```bash
+cd fastapi
+```
 
 # Database Setup and Installation.
 1. Download and Install PostgreSQL in your computer using this link `https://www.postgresql.org/download/`.
-2. Create a database.
+2. Create a database using below command:-
+```bash
+CREATE DATABASE database_name;
+```
 
 # Setup environment variables.
 Create a .env file and store your database credentials in below format:-
-  - `dbname = 'name_of_db'`
-  - `user= 'username_of_db'`
-  - `password= 'password_of_db'`
-  - `host= 'host_of_db'`
-  - `port' =  'port_no_of_db'`
-  - `MAIN_DATABASE_URL = 'url_of_main_db'`
+```bash
+'dbname' = 'name_of_db'
+'user' = 'username_of_db'
+'password' = 'password_of_db'
+'host' = 'host_of_db'
+'port' =  'port_no_of_db'
+'MAIN_DATABASE_URL' = 'url_of_main_db'
+'TESTING_DATABASE_URL' = 'url_of_test_db'
+ ```
 
 # Run project.
 1. Run the below command to load the data and run the project:-
-  - `uvicorn main:app --reload`
-
-    This step will take few minutes as it will dump the data in the initial setup.
+```bash
+uvicorn main:app --reload
+```
+#### This step will take few minutes as it will dump the data in the initial setup.
 
 # To access the API endpoints:
-  - `/api/weather/`  -- for weather records
-  - `/api/weather/stats/`  -- for weather stats
-  - `/docs` -- for swagger documentation
-
+```bash
+/api/weather/  #for weather records
+/api/weather/stats/  #for weather stats
+/docs #for swagger documentation
+```
 # Testing.
 To run the testcases use this command:-
-  - `pytest`
+```bash
+pytest
+```
