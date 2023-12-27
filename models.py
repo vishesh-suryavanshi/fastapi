@@ -27,7 +27,7 @@ class Stats(Base):
     __tablename__ = 'stats'
     avg_max_temperature = Column(Float)
     avg_min_temperature = Column(Float)
-    avg_precipitation = Column(Float)
+    total_precipitation = Column(Float)
     year = Column(Integer)
     station_id = Column(Integer, ForeignKey('station.id'))
     __table_args__ = (
