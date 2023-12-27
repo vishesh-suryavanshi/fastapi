@@ -5,8 +5,6 @@ from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 
-import models
-from database import engine
 
 
 def load_file_data():
@@ -19,7 +17,6 @@ def load_file_data():
 
         start_time = datetime.now()
 
-        models.Base.metadata.create_all(bind=engine)
         folder_path = 'data/wx_data'
         file_list = os.listdir(folder_path)
 
@@ -40,31 +37,32 @@ def load_file_data():
         select_id_of_station = f'SELECT id from station where name=%s'
 
         for file_name in file_list:
-            file_path = os.path.join(folder_path, file_name)
-            all_records = []
-            station_name = Path(file_path).stem
-            cursor.execute(insert_into_station, (station_name,))
-            cursor.execute(select_id_of_station, (station_name,))
-            station = cursor.fetchone()
-            station_id = station[0]
-            with open(file_path, 'r') as file:
-                for line in file:
-                    data = line.strip().split('\t')
-                    if '-9999' in data:
-                        continue
-                    else:
-                        temp_line = []
-                        for idx, cell in enumerate(data):
-                            if idx == 0:
-                                temp_line.append(datetime.strptime(str(cell), '%Y%m%d').date())
-                            else:
-                                temp_line.append(int(cell.strip()))
-                        temp_line.append(station_id)
-                        all_records.append(temp_line)
-            for record in all_records:
-                cursor.execute(insert_into_record, record)
-            end_time = datetime.now()
-            logging.info(f'Start time {start_time}, End time {end_time}, Inserted Records {len(all_records)}')
+            if file_name.endswith('.txt'):
+                file_path = os.path.join(folder_path, file_name)
+                all_records = []
+                station_name = Path(file_path).stem
+                cursor.execute(insert_into_station, (station_name,))
+                cursor.execute(select_id_of_station, (station_name,))
+                station = cursor.fetchone()
+                station_id = station[0]
+                with open(file_path, 'r') as file:
+                    for line in file:
+                        data = line.strip().split('\t')
+                        if '-9999' in data:
+                            continue
+                        else:
+                            temp_line = []
+                            for idx, cell in enumerate(data):
+                                if idx == 0:
+                                    temp_line.append(datetime.strptime(str(cell), '%Y%m%d').date())
+                                else:
+                                    temp_line.append(int(cell.strip()))
+                            temp_line.append(station_id)
+                            all_records.append(temp_line)
+                for record in all_records:
+                    cursor.execute(insert_into_record, record)
+                end_time = datetime.now()
+                logging.info(f'Start time {start_time}, End time {end_time}, Inserted Records {len(all_records)}')
         connection.commit()
         cursor.close()
         connection.close()
@@ -111,5 +109,3 @@ def calculate_stats_data():
         print(str(e))
 
 
-load_file_data()
-calculate_stats_data()
