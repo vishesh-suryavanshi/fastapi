@@ -9,12 +9,15 @@ There are 3 endpoints in this project:-
 2. Create and activate a virtual environment using the below commands:-
   - `pip install virtualenv`
   - `python -m venv env`
-  - `source env/bin/activate`
+  - `source env/bin/activate` (For Mac and Linux)
+  - `env\Scripts\activate` (in Windows)
 3. Run the below command to install the required packages:-
   - `pip install -r requirements.txt`
+4. Move to project directory using below command:-
+  - `cd fastapi`
 
 # Database Setup and Installation.
-1. Download and Install PostgreSQL in your computer.
+1. Download and Install PostgreSQL in your computer using this link `https://www.postgresql.org/download/`.
 2. Create a database.
 
 # Setup environment variables.
@@ -27,9 +30,8 @@ Create a .env file and store your database credentials in below format:-
   - `MAIN_DATABASE_URL = 'url_of_main_db'`
 
 # Run project.
-1. Use `data_script.py` and `stats_script.py` file to dump the database using below commands:-
+1. Use `data_script.py` to dump the database using below command:-
   - `python data_script.py`
-  - `python stats_script.py`
 2. Run the below command to run the project:-
   - `uvicorn main:app --reload`
 
