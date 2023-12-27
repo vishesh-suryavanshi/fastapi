@@ -33,6 +33,8 @@ Create a .env file and store your database credentials in below format:-
 1. Run the below command to load the data and run the project:-
   - `uvicorn main:app --reload`
 
+    This step will take few minutes as it will dump the data in the initial setup.
+
 # To access the API endpoints:
   - `/api/weather/`  -- for weather records
   - `/api/weather/stats/`  -- for weather stats
