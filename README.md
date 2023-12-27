@@ -30,9 +30,7 @@ Create a .env file and store your database credentials in below format:-
   - `MAIN_DATABASE_URL = 'url_of_main_db'`
 
 # Run project.
-1. Use `data_script.py` to dump the database using below command:-
-  - `python data_script.py`
-2. Run the below command to run the project:-
+1. Run the below command to load the data and run the project:-
   - `uvicorn main:app --reload`
 
 # To access the API endpoints:
