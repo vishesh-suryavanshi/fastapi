@@ -2,7 +2,7 @@
 There are 3 endpoints in this project:-
   1. `/api/weather/`
   2. `/api/weather/stats/`
-  3. `/api/docs`
+  3. `/docs`
 
 # Project Setup and Installation.
 1. Clone the git repository.
@@ -36,7 +36,7 @@ Create a .env file and store your database credentials in below format:-
 # To access the API endpoints:
   - `/api/weather/`  -- for weather records
   - `/api/weather/stats/`  -- for weather stats
-  - `api/docs` -- for swagger documentation
+  - `/docs` -- for swagger documentation
 
 # Testing.
 To run the testcases use this command:-
